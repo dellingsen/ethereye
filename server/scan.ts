@@ -43,27 +43,53 @@ function parseArpOutput(arpOutput: string): ParsedDevice[] {
   const lines = arpOutput.split("\n");
 
   for (const line of lines) {
-    const match = line.match(
-      /\((\d+\.\d+\.\d+\.\d+)\)\s+at\s+([0-9a-f:]{17})/i,
+    // Try Windows format first: IP MAC TYPE
+    let match = line.match(
+      /^\s*(\d+\.\d+\.\d+\.\d+)\s+([0-9a-f-]{17})\s+(\w+)/i,
     );
-    if (!match) continue;
+    if (match) {
+      const ip = match[1];
+      const mac = match[2].replace(/-/g, ":").toUpperCase(); // Convert dashes to colons
+      const type = match[3].toLowerCase();
 
-    const ip = match[1];
-    const mac = match[2].toUpperCase();
+      if (devices.has(ip)) continue;
 
-    // Skip if duplicate IP already exists
-    if (devices.has(ip)) continue;
+      const device: ParsedDevice = {
+        ip,
+        mac,
+        status: "online",
+        lastSeen: new Date().toISOString(),
+        raw: line.trim(),
+        type: inferDeviceType(line, ip),
+      };
 
-    const device: ParsedDevice = {
-      ip,
-      mac,
-      status: "online",
-      lastSeen: new Date().toISOString(),
-      raw: line.trim(),
-      type: inferDeviceType(line, ip),
-    };
+      devices.set(ip, device);
+      continue;
+    }
 
-    devices.set(ip, device);
+    // Try Unix format: hostname (ip) at mac [ether] on interface
+    match = line.match(
+      /(.+?)\s*\((\d+\.\d+\.\d+\.\d+)\)\s+at\s+([0-9a-f:]{17})/i,
+    );
+    if (match) {
+      const hostname = match[1].trim();
+      const ip = match[2];
+      const mac = match[3].toUpperCase();
+
+      if (devices.has(ip)) continue;
+
+      const device: ParsedDevice = {
+        ip,
+        mac,
+        hostname: hostname !== "?" ? hostname : undefined,
+        status: "online",
+        lastSeen: new Date().toISOString(),
+        raw: line.trim(),
+        type: inferDeviceType(line, ip),
+      };
+
+      devices.set(ip, device);
+    }
   }
 
   return Array.from(devices.values());

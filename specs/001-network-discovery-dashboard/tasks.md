@@ -19,13 +19,13 @@
 
 **Purpose**: Build the backend scan bridge, API contract, and frontend state/service plumbing that all stories depend on.
 
-- [ ] T006 Implement backend scan parser in `server/scan.ts` to execute `arp -a` and return parsed device rows
-- [ ] T007 Implement local API routes in `server/routes/network.ts` for `GET /api/scan` and `POST /api/scan`
-- [ ] T008 Implement Node.js server startup and route registration in `server/index.ts`
-- [ ] T009 Implement frontend API client in `src/services/networkApi.ts` to request scans and fetch results
-- [ ] T010 Create Zustand device store in `src/stores/deviceStore.ts` to manage scan state, devices, and errors
-- [ ] T011 Create scan status UI in `src/components/StatusBanner.tsx` for progress, success, and error states
-- [ ] T012 Create scan control UI in `src/components/ScanControls.tsx` for scan and refresh actions
+- [x] T006 Implement backend scan parser in `server/scan.ts` to execute `arp -a` and return parsed device rows
+- [x] T007 Implement local API routes in `server/routes/network.ts` for `GET /api/scan` and `POST /api/scan`
+- [x] T008 Implement Node.js server startup and route registration in `server/index.ts`
+- [x] T009 Implement frontend API client in `src/services/networkApi.ts` to request scans and fetch results
+- [x] T010 Create Zustand device store in `src/stores/deviceStore.ts` to manage scan state, devices, and errors
+- [x] T011 Create scan status UI in `src/components/StatusBanner.tsx` for progress, success, and error states
+- [x] T012 Create scan control UI in `src/components/ScanControls.tsx` for scan and refresh actions
 
 ---
 
@@ -35,11 +35,13 @@
 
 **Independent Test**: Run the app, start a scan, and confirm discovered devices render with IP, hostname, and type.
 
-- [ ] T013 [US1] Create `src/components/DeviceCard.tsx` to render individual device details
-- [ ] T014 [US1] Create `src/components/Dashboard.tsx` to render scan controls, status, and device list
-- [ ] T015 [US1] Create `src/App.tsx` to render the dashboard and apply global layout
-- [ ] T016 [US1] Integrate the network API client into `src/stores/deviceStore.ts` for live scans
-- [ ] T017 [US1] Add empty-state feedback and error messaging in `src/components/Dashboard.tsx`
+- [x] T013 Create `src/components/DeviceList.tsx` for displaying discovered devices in terminal style
+- [x] T014 Create `src/components/NetworkStats.tsx` for displaying scan statistics and metadata
+- [x] T015 [US1] Create `src/components/DeviceCard.tsx` to render individual device details
+- [x] T016 [US1] Create `src/components/Dashboard.tsx` to render scan controls, status, and device list
+- [x] T017 [US1] Create `src/App.tsx` to render the dashboard and apply global layout
+- [x] T018 [US1] Integrate the network API client into `src/stores/deviceStore.ts` for live scans
+- [x] T019 [US1] Add empty-state feedback and error messaging in `src/components/Dashboard.tsx`
 
 ---
 
@@ -49,10 +51,10 @@
 
 **Independent Test**: Verify the app uses dark neon styling, glowing card effects, and motion transitions.
 
-- [ ] T018 [P] [US2] Configure cyberpunk styling in `tailwind.config.js` and `src/index.css`
-- [ ] T019 [US2] Style the dashboard layout in `src/components/Dashboard.tsx`
-- [ ] T020 [US2] Style device cards in `src/components/DeviceCard.tsx` with neon hover states
-- [ ] T021 [US2] Add Framer Motion animations in `src/components/DeviceCard.tsx` and `src/components/Dashboard.tsx`
+- [ ] T020 [P] [US2] Configure cyberpunk styling in `tailwind.config.js` and `src/index.css`
+- [ ] T021 [US2] Style the dashboard layout in `src/components/Dashboard.tsx`
+- [ ] T022 [US2] Style device cards in `src/components/DeviceCard.tsx` with neon hover states
+- [ ] T023 [US2] Add Framer Motion animations in `src/components/DeviceCard.tsx` and `src/components/Dashboard.tsx`
 
 ---
 
@@ -62,9 +64,9 @@
 
 **Independent Test**: Click the refresh button and confirm the app triggers a new scan and updates results.
 
-- [ ] T022 [P] [US3] Add a refresh control in `src/components/ScanControls.tsx`
-- [ ] T023 [US3] Implement refresh scan logic in `src/stores/deviceStore.ts`
-- [ ] T024 [US3] Display updated scan timestamp and refreshed results in `src/components/Dashboard.tsx`
+- [ ] T024 [P] [US3] Add a refresh control in `src/components/ScanControls.tsx`
+- [ ] T025 [US3] Implement refresh scan logic in `src/stores/deviceStore.ts`
+- [ ] T026 [US3] Display updated scan timestamp and refreshed results in `src/components/Dashboard.tsx`
 
 ---
 
@@ -72,14 +74,14 @@
 
 **Purpose**: Final cleanup, documentation, and validation across frontend and backend.
 
-- [ ] T025 [P] Validate SC-001: Measure and confirm network scan completes within 30 seconds for networks with up to 50 devices
-- [ ] T026 [P] Validate SC-002: Measure and confirm dashboard UI loads and displays initial state within 2 seconds
-- [ ] T027 [P] Validate SC-003: Test and confirm system discovers at least 80% of devices present on a typical home/office network
-- [ ] T028 [P] Validate SC-004: Verify users can identify device types and key information for 95% of discovered devices
-- [ ] T029 [P] Update `specs/001-network-discovery-dashboard/quickstart.md` with exact install and run steps for the backend bridge
-- [ ] T030 [P] Update `specs/001-network-discovery-dashboard/contracts/network-scan-api.md` with final request/response examples if implementation differs
-- [ ] T031 [P] Verify TypeScript types and clean up unused imports in `src/` and `server/`
-- [ ] T032 [P] Add a backend startup script or README note in `package.json`
+- [ ] T027 [P] Validate SC-001: Measure and confirm network scan completes within 30 seconds for networks with up to 50 devices
+- [ ] T028 [P] Validate SC-002: Measure and confirm dashboard UI loads and displays initial state within 2 seconds
+- [ ] T029 [P] Validate SC-003: Test and confirm system discovers at least 80% of devices present on a typical home/office network
+- [ ] T030 [P] Validate SC-004: Verify users can identify device types and key information for 95% of discovered devices
+- [ ] T031 [P] Update `specs/001-network-discovery-dashboard/quickstart.md` with exact install and run steps for the backend bridge
+- [ ] T032 [P] Update `specs/001-network-discovery-dashboard/contracts/network-scan-api.md` with final request/response examples if implementation differs
+- [ ] T033 [P] Verify TypeScript types and clean up unused imports in `src/` and `server/`
+- [ ] T034 [P] Add a backend startup script or README note in `package.json`
 
 ---
 
