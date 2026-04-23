@@ -7,11 +7,11 @@
 
 **Purpose**: Project initialization and baseline configuration for frontend and backend.
 
-- [ ] T001 Create backend scaffold in `server/index.ts`, `server/scan.ts`, and `server/routes/network.ts`
-- [ ] T002 Add dependencies in `package.json` for `express`, `zustand`, `framer-motion`, `tailwindcss`, `postcss`, and `autoprefixer`
-- [ ] T003 Create Tailwind CSS configuration in `tailwind.config.js` and `postcss.config.js`
-- [ ] T004 Create Tailwind entry stylesheet in `src/styles/tailwind.css` and import it from `src/index.css`
-- [ ] T005 Create frontend network type definitions in `src/types/network.ts` for `Device` and `ScanState`
+- [x] T001 Create backend scaffold in `server/index.ts`, `server/scan.ts`, and `server/routes/network.ts`
+- [x] T002 Add dependencies in `package.json` for `express`, `zustand`, `framer-motion`, `tailwindcss`, `postcss`, and `autoprefixer`
+- [x] T003 Create Tailwind CSS configuration in `tailwind.config.js` and `postcss.config.js`
+- [x] T004 Create Tailwind entry stylesheet in `src/styles/tailwind.css` and import it from `src/index.css`
+- [x] T005 Create frontend network type definitions in `src/types/network.ts` for `Device` and `ScanState`
 
 ---
 

@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk/Matrix base styling */
+@layer base {
+  html {
+    @apply dark;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  h1 {
+    @apply text-emerald-400 font-bold tracking-tighter;
+  }
+
+  h2 {
+    @apply text-emerald-300 font-semibold;
+  }
+
+  h3 {
+    @apply text-slate-100 font-semibold;
+  }
+
+  p {
+    @apply text-slate-300;
+  }
+
+  code {
+    @apply bg-slate-900 text-emerald-300 px-2 py-1 rounded text-sm font-mono;
+  }
+}
+
+/* Cyberpunk components */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-medium transition-all;
+  }
+
+  .btn-primary {
+    @apply btn bg-emerald-600 hover:bg-emerald-500 text-slate-950 shadow-neon-emerald hover:shadow-neon-lg;
+  }
+
+  .btn-secondary {
+    @apply btn bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700;
+  }
+
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-lg p-4 shadow-md transition-all;
+  }
+
+  .card-hover {
+    @apply card hover:border-emerald-500 hover:shadow-neon-emerald hover:bg-slate-800;
+  }
+
+  .neon-text {
+    @apply text-emerald-400 drop-shadow-lg;
+  }
+
+  .neon-glow {
+    @apply shadow-neon-emerald border-emerald-500 border;
+  }
+
+  .scan-status {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700;
+  }
+
+  .scan-active {
+    @apply border-emerald-500 bg-slate-900 shadow-neon-emerald animate-pulse;
+  }
+}
+
+/* Utility animations */
+@layer utilities {
+  .animate-matrix {
+    animation: matrix 3s linear infinite;
+  }
+
+  @keyframes matrix {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+}
