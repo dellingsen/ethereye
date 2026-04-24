@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { ScanState } from '../types/network'
+import type { ScanState } from '../types/network'
 
 interface StatusBannerProps {
   scanState: ScanState

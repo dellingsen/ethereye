@@ -5,7 +5,6 @@
 /* Cyberpunk/Matrix base styling */
 @layer base {
   html {
-    @apply dark;
   }
 
   body {

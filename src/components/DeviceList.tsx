@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Device } from '../types/network'
+import type { Device } from '../types/network'
 import { DeviceCard } from './DeviceCard'
 
 interface DeviceListProps {

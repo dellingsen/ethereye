@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Device } from '../types/network'
+import type { Device } from '../types/network'
 
 interface NetworkStatsProps {
   devices: Device[]

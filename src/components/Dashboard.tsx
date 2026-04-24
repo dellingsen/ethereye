@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
 import { useDeviceStore } from '../stores/deviceStore'
-
-const Motion = motion as any
 import { StatusBanner } from './StatusBanner'
 import { ScanControls } from './ScanControls'
 import { NetworkStats } from './NetworkStats'

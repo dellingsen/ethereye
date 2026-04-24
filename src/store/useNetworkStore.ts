@@ -9,7 +9,7 @@ interface NetworkStore {
   fetchScanResults: () => Promise<void>;
 }
 
-export const useNetworkStore = create<NetworkStore>((set, get) => ({
+export const useNetworkStore = create<NetworkStore>((set) => ({
   devices: [],
   isScanning: false,
   error: null,

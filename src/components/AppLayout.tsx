@@ -1,22 +1,47 @@
 import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 
-const Motion = motion as any
-
 interface AppLayoutProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 relative overflow-hidden">
+    <motion.div
+      className="min-h-screen bg-slate-950 text-slate-200 relative overflow-hidden"
+      animate={{
+        opacity: [0.97, 1, 0.98, 1, 0.99, 1],
+      }}
+      transition={{
+        duration: 0.2,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+      }}
+    >
       {/* Scanline Overlay */}
       <motion.div
         className="fixed inset-0 pointer-events-none z-50 scanlines scanlines-flicker"
       />
 
       <div className="container mx-auto px-4 py-8 relative z-10">
-        <div className="border border-emerald-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm">
+        <motion.div
+          className="border border-emerald-500/30 rounded-lg bg-slate-900/50 backdrop-blur-sm shadow-neon-emerald-lg"
+          initial={{ boxShadow: "0 0 20px rgba(34, 197, 94, 0.3)" }}
+          animate={{
+            boxShadow: [
+              "0 0 20px rgba(34, 197, 94, 0.3)",
+              "0 0 30px rgba(34, 197, 94, 0.5)",
+              "0 0 25px rgba(34, 197, 94, 0.4)",
+              "0 0 20px rgba(34, 197, 94, 0.3)",
+            ],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
           <div className="border-b border-emerald-500/20 px-6 py-4">
             <h1 className="text-2xl font-bold text-emerald-400 tracking-tight">
               EtherEye Network Discovery
@@ -28,8 +53,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           <div className="p-6">
             {children}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }
