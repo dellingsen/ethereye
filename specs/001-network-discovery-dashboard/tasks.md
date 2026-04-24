@@ -51,10 +51,10 @@
 
 **Independent Test**: Verify the app uses dark neon styling, glowing card effects, and motion transitions.
 
-- [ ] T020 [P] [US2] Configure cyberpunk styling in `tailwind.config.js` and `src/index.css`
-- [ ] T021 [US2] Style the dashboard layout in `src/components/Dashboard.tsx`
-- [ ] T022 [US2] Style device cards in `src/components/DeviceCard.tsx` with neon hover states
-- [ ] T023 [US2] Add Framer Motion animations in `src/components/DeviceCard.tsx` and `src/components/Dashboard.tsx`
+- [x] T020 [P] [US2] Configure cyberpunk styling in `tailwind.config.js` and `src/index.css`
+- [x] T021 [US2] Style the dashboard layout in `src/components/Dashboard.tsx`
+- [x] T022 [US2] Style device cards in `src/components/DeviceCard.tsx` with neon hover states
+- [x] T023 [US2] Add Framer Motion animations in `src/components/DeviceCard.tsx` and `src/components/Dashboard.tsx`
 
 ---
 
@@ -64,9 +64,9 @@
 
 **Independent Test**: Click the refresh button and confirm the app triggers a new scan and updates results.
 
-- [ ] T024 [P] [US3] Add a refresh control in `src/components/ScanControls.tsx`
-- [ ] T025 [US3] Implement refresh scan logic in `src/stores/deviceStore.ts`
-- [ ] T026 [US3] Display updated scan timestamp and refreshed results in `src/components/Dashboard.tsx`
+- [x] T024 [P] [US3] Add a refresh control in `src/components/ScanControls.tsx`
+- [x] T025 [US3] Implement refresh scan logic in `src/stores/deviceStore.ts`
+- [x] T026 [US3] Display updated scan timestamp and refreshed results in `src/components/Dashboard.tsx`
 
 ---
 
@@ -74,14 +74,14 @@
 
 **Purpose**: Final cleanup, documentation, and validation across frontend and backend.
 
-- [ ] T027 [P] Validate SC-001: Measure and confirm network scan completes within 30 seconds for networks with up to 50 devices
-- [ ] T028 [P] Validate SC-002: Measure and confirm dashboard UI loads and displays initial state within 2 seconds
-- [ ] T029 [P] Validate SC-003: Test and confirm system discovers at least 80% of devices present on a typical home/office network
-- [ ] T030 [P] Validate SC-004: Verify users can identify device types and key information for 95% of discovered devices
-- [ ] T031 [P] Update `specs/001-network-discovery-dashboard/quickstart.md` with exact install and run steps for the backend bridge
-- [ ] T032 [P] Update `specs/001-network-discovery-dashboard/contracts/network-scan-api.md` with final request/response examples if implementation differs
-- [ ] T033 [P] Verify TypeScript types and clean up unused imports in `src/` and `server/`
-- [ ] T034 [P] Add a backend startup script or README note in `package.json`
+- [x] T027 [P] Validate SC-001: Measure and confirm network scan completes within 30 seconds for networks with up to 50 devices
+- [x] T028 [P] Validate SC-002: Measure and confirm dashboard UI loads and displays initial state within 2 seconds
+- [x] T029 [P] Validate SC-003: Test and confirm system discovers at least 80% of devices present on a typical home/office network
+- [x] T030 [P] Validate SC-004: Verify users can identify device types and key information for 95% of discovered devices
+- [x] T031 [P] Update `specs/001-network-discovery-dashboard/quickstart.md` with exact install and run steps for the backend bridge
+- [x] T032 [P] Update `specs/001-network-discovery-dashboard/contracts/network-scan-api.md` with final request/response examples if implementation differs
+- [x] T033 [P] Verify TypeScript types and clean up unused imports in `src/` and `server/`
+- [x] T034 [P] Add a backend startup script or README note in `package.json`
 
 ---
 

@@ -65,7 +65,7 @@ export const NetworkStats: React.FC<NetworkStatsProps> = ({
               </div>
             </div>
             <div className="text-slate-500 text-sm">
-              {new Date().toLocaleDateString()}
+              {lastScanTime.toLocaleDateString()}
             </div>
           </div>
         </motion.div>

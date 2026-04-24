@@ -48,24 +48,39 @@ export default {
         neon: "0 0 10px rgba(16, 216, 97, 0.5)",
         "neon-lg": "0 0 20px rgba(16, 216, 97, 0.8)",
         "neon-emerald": "0 0 20px rgba(34, 197, 94, 0.6)",
+        "neon-emerald-lg": "0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.4)",
+        "neon-matrix": "0 0 10px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.1)",
+        "neon-cyber": "0 0 15px rgba(16, 216, 97, 0.6), 0 0 30px rgba(16, 216, 97, 0.3)",
       },
-      animation: {
-        pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        glow: "glow 2s ease-in-out infinite",
+      textShadow: {
+        neon: "0 0 10px rgba(16, 216, 97, 0.8)",
+        "neon-lg": "0 0 20px rgba(16, 216, 97, 1)",
       },
-      keyframes: {
-        glow: {
-          "0%, 100%": {
-            boxShadow:
-              "0 0 10px rgba(16, 216, 97, 0.5), inset 0 0 10px rgba(16, 216, 97, 0.1)",
-          },
-          "50%": {
-            boxShadow:
-              "0 0 20px rgba(16, 216, 97, 0.8), inset 0 0 20px rgba(16, 216, 97, 0.2)",
-          },
+      backgroundImage: {
+        "matrix-rain": "linear-gradient(180deg, rgba(0,255,0,0.1) 0%, transparent 100%)",
+        "cyber-grid": "linear-gradient(rgba(16, 216, 97, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 216, 97, 0.1) 1px, transparent 1px)",
+      },
+      backgroundSize: {
+        "cyber-grid": "20px 20px",
+      },
+    },
+    animation: {
+      pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      glow: "glow 2s ease-in-out infinite",
+    },
+    keyframes: {
+      glow: {
+        "0%, 100%": {
+          boxShadow:
+            "0 0 10px rgba(16, 216, 97, 0.5), inset 0 0 10px rgba(16, 216, 97, 0.1)",
+        },
+        "50%": {
+          boxShadow:
+            "0 0 20px rgba(16, 216, 97, 0.8), inset 0 0 20px rgba(16, 216, 97, 0.2)",
         },
       },
     },
   },
-  plugins: [],
+},
+plugins: [],
 }

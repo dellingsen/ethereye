@@ -16,6 +16,7 @@ export interface ScanState {
   errorMessage?: string;
   devices: Device[];
   scannedAt?: string;
+  scanDuration?: number;
 }
 
 export interface ScanResult {
@@ -24,4 +25,5 @@ export interface ScanResult {
   errorMessage?: string;
   progressMessage?: string;
   scannedAt?: string;
+  scanDuration?: number;
 }

@@ -1,4 +1,4 @@
-import { Device, ScanResult } from "../types/network";
+import type { ScanResult } from "../types/network";
 
 const API_BASE_URL = "http://localhost:3001";
 

@@ -1,24 +1,31 @@
 import { create } from "zustand";
-import { Device, ScanState } from "../types/network";
+import type { ScanState } from "../types/network";
 import { NetworkApiService } from "../services/networkApi";
 
 interface DeviceStore extends ScanState {
   fetchDevices: () => Promise<void>;
   triggerScan: () => Promise<void>;
+  refreshScan: () => Promise<void>;
 }
 
-export const useDeviceStore = create<DeviceStore>((set, get) => ({
+export const useDeviceStore = create<DeviceStore>((set) => ({
   status: "idle",
   devices: [],
   progressMessage: undefined,
   errorMessage: undefined,
   scannedAt: undefined,
+  scanDuration: undefined,
 
   fetchDevices: async () => {
-    set({ status: "scanning", progressMessage: "Fetching scan results..." });
+    const scanStart = Date.now();
+    set({
+      status: "scanning",
+      progressMessage: "Fetching latest scan results...",
+    });
 
     try {
       const result = await NetworkApiService.getScanResults();
+      const duration = (Date.now() - scanStart) / 1000;
 
       set({
         status: result.status,
@@ -26,6 +33,7 @@ export const useDeviceStore = create<DeviceStore>((set, get) => ({
         progressMessage: undefined,
         errorMessage: result.errorMessage,
         scannedAt: result.scannedAt,
+        scanDuration: result.scanDuration ?? duration,
       });
     } catch (error) {
       const errorMessage =
@@ -39,10 +47,12 @@ export const useDeviceStore = create<DeviceStore>((set, get) => ({
   },
 
   triggerScan: async () => {
+    const scanStart = Date.now();
     set({ status: "scanning", progressMessage: "Scanning network..." });
 
     try {
       const result = await NetworkApiService.triggerScan();
+      const duration = (Date.now() - scanStart) / 1000;
 
       set({
         status: result.status,
@@ -50,10 +60,38 @@ export const useDeviceStore = create<DeviceStore>((set, get) => ({
         progressMessage: undefined,
         errorMessage: result.errorMessage,
         scannedAt: result.scannedAt,
+        scanDuration: result.scanDuration ?? duration,
       });
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : "Scan failed";
+      set({
+        status: "error",
+        errorMessage,
+        progressMessage: undefined,
+      });
+    }
+  },
+
+  refreshScan: async () => {
+    const scanStart = Date.now();
+    set({ status: "scanning", progressMessage: "Refreshing scan..." });
+
+    try {
+      const result = await NetworkApiService.triggerScan();
+      const duration = (Date.now() - scanStart) / 1000;
+
+      set({
+        status: result.status,
+        devices: result.devices,
+        progressMessage: undefined,
+        errorMessage: result.errorMessage,
+        scannedAt: result.scannedAt,
+        scanDuration: result.scanDuration ?? duration,
+      });
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Refresh failed";
       set({
         status: "error",
         errorMessage,

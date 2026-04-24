@@ -1,23 +1,58 @@
 @import "./styles/tailwind.css";
 
+/* Cyberpunk theme variables */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --cyber-bg-primary: #020617; /* slate-950 */
+  --cyber-bg-secondary: #0f172a; /* slate-900 */
+  --cyber-bg-tertiary: #1e293b; /* slate-800 */
+  --cyber-text-primary: #f1f5f9; /* slate-100 */
+  --cyber-text-secondary: #cbd5e1; /* slate-300 */
+  --cyber-text-muted: #64748b; /* slate-500 */
+  --cyber-accent: #22c55e; /* emerald-500 */
+  --cyber-accent-light: #4ade80; /* emerald-400 */
+  --cyber-accent-dark: #15803d; /* emerald-700 */
+  --cyber-border: rgba(34, 197, 94, 0.3);
+  --cyber-border-light: rgba(34, 197, 94, 0.5);
+  --cyber-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  --cyber-shadow-lg: 0 0 40px rgba(34, 197, 94, 0.5);
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: 'Courier New', Consolas, 'Liberation Mono', Menlo, monospace;
+  --heading: 'Courier New', Consolas, 'Liberation Mono', Menlo, monospace;
+  --mono: 'Courier New', Consolas, 'Liberation Mono', Menlo, monospace;
 
-  font: 18px/145% var(--sans);
+  font: 16px/150% var(--sans);
+}
+
+/* Matrix-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cyber-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyber-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-accent-light);
+  box-shadow: var(--cyber-shadow);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(34, 197, 94, 0.3);
+  color: var(--cyber-text-primary);
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid var(--cyber-accent);
+  outline-offset: 2px;
+}
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);

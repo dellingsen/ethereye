@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { performNetworkScan, ParsedDevice } from "../scan";
+import { performNetworkScan } from "../scan";
+import type { ParsedDevice } from "../scan";
 import { URL } from "url";
 
 export interface ScanResult {
@@ -8,6 +9,7 @@ export interface ScanResult {
   errorMessage?: string;
   progressMessage?: string;
   scannedAt?: string;
+  scanDuration?: number;
 }
 
 export class Router {
@@ -27,11 +29,14 @@ export class Router {
 
   private handleGetScan(res: ServerResponse): void {
     try {
+      const scanStart = Date.now();
       const devices = performNetworkScan();
+      const scanDuration = (Date.now() - scanStart) / 1000;
       const result: ScanResult = {
         status: "completed",
         devices,
         scannedAt: new Date().toISOString(),
+        scanDuration,
       };
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(JSON.stringify(result));
@@ -50,12 +55,14 @@ export class Router {
 
   private handlePostScan(res: ServerResponse): void {
     try {
-      // Trigger a fresh scan
+      const scanStart = Date.now();
       const devices = performNetworkScan();
+      const scanDuration = (Date.now() - scanStart) / 1000;
       const result: ScanResult = {
         status: "completed",
         devices,
         scannedAt: new Date().toISOString(),
+        scanDuration,
       };
       res.writeHead(202, { "Content-Type": "application/json" });
       res.end(JSON.stringify(result));

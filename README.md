@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# EtherEye Network Discovery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EtherEye is a local network discovery dashboard built with React, TypeScript, Vite, Tailwind CSS, Zustand, Framer Motion, and a small TypeScript backend bridge.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20+ installed
+- npm available
+- Local network access for `arp -a` scans
 
-## React Compiler
+## Install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm install -D tailwindcss postcss autoprefixer
+npm install framer-motion express
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the backend bridge in one terminal:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev:server
+```
+
+Start the frontend app in another terminal:
+
+```bash
+npm run dev
+```
+
+For a one-time backend start without file watching:
+
+```bash
+npm run server
+```
+
+## Backend Bridge
+
+- Backend entry: `server/index.ts`
+- Scan logic: `server/scan.ts`
+- API routes: `server/routes/network.ts`
+
+The backend runs locally on `http://localhost:3001` and exposes `/api/scan`.
+
+## Notes
+
+- `GET /api/scan` and `POST /api/scan` return JSON device data with timings.
+- Scan duration and last scan timestamp are shown in the front-end dashboard.
+- The app uses Tailwind CSS and Framer Motion for cyberpunk styling and animated transitions.
+
+## Build
+
+```bash
+npm run build
 ```
